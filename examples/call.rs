@@ -3,7 +3,7 @@ use oxhttp::{
     model::{Method, Request, StatusCode},
     Client,
 };
-use revm::primitives::{Address, U256};
+use revm::primitives::Address;
 
 fn main() {
     let url = std::env::var("URL").expect("ENV VAR `URL` NEEDS TO BE SET");
@@ -25,7 +25,7 @@ fn main() {
                 serde_json::to_string(&QuoteIntent {
                     from: usdt,
                     to: weth,
-                    input: U256::from(1000e6 as u64),
+                    input: 1000e6 as u128,
                 })
                 .expect("work"),
             )
